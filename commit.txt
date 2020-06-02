@@ -1,9 +1,24 @@
-//Adds every file in the current directory to the staging index
+//Adds every file in the current directory to the staging index (will then be tracked)
 git add .
 
 //Then, commit everything in the index with a message:
 git commit -m "Type a brief summary of the change here <50 characters"
+//Make sure that the summary is in present tense
+
+//Check the working tree status:
+git status
 
 Check previous changes:
 git log
 git log -n 5 // Only display the 5 most recent commits
+
+//View changes in working directory
+git diff
+
+//View changes in the staging (cached) area
+git diff --staged
+OR
+git diff --cached
+
+
+see commit best practices: https://medium.com/@nawarpianist/git-commit-best-practices-dab8d722de99
