@@ -11,14 +11,16 @@ git status
 Check previous changes:
 git log
 git log -n 5 // Only display the 5 most recent commits
+git log --oneline //Display on the first line of the commit messages
 
-//View changes in working directory
-git diff
-
-//View changes in the staging (cached) area
-git diff --staged
+//Stages AND commit all changes to tracked files
+git commit -a
 OR
-git diff --cached
+//Note that this does not include untracked files
 
+//Multi-line commit message
+git commit -a
+//A new file will open up. Type the multi-line commit message at the top. Start with main heading,
+//Then double line break and type the detailed commit message with changes
 
 see commit best practices: https://medium.com/@nawarpianist/git-commit-best-practices-dab8d722de99
