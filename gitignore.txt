@@ -1,0 +1,20 @@
+project/.gitignore 
+
+// List of rules to determine which files to ignore
+// Changes made to ignored files will be ignored by Git
+
+//Pattern Matching (basic regular expressions)
+* ? [aeiou] [0-9]
+
+// Ignore all files in the logs directory ending it .txt:
+logs\*.txt
+
+// Negative expressions
+e.g. Ignore all files that end in .php, but, do not ignore index.php
+*.php
+!index.php
+
+// Ignore all files in a directory with a trailing slash:
+e.g. assets\videos\
+
+# This is a comment
