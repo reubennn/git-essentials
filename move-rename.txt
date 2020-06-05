@@ -1,0 +1,6 @@
+//If you rename the file in the folder, it says the original file is deleted and there is a new untracked file
+//After staging the changes, git then recognises that the file has been renamed.
+//If approximately 50% of the file is the same, it assumes that it has been renamed.
+
+//Simpler way to rename/move a file
+git mv first_file.txt location\same_file_renamed.txt
