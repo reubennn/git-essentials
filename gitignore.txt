@@ -25,3 +25,7 @@ e.g. assets\videos\
 * Logs and databases
 * Operating system generated files
 * User-uploaded assets (images, PDFs, videos)
+
+//Ignore tracked file
+git rm --cached <file>
+//Git will say it is removing it but it actually isn't
