@@ -1,6 +1,9 @@
 //Adds every file in the current directory to the staging index (will then be tracked)
 git add .
 
+//Remove a file from the staging directory
+git restore --staged <file>
+
 //Then, commit everything in the index with a message:
 git commit -m "Type a brief summary of the change here <50 characters"
 //Make sure that the summary is in present tense
