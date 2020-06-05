@@ -18,4 +18,7 @@ git commit -a
 //A new file will open up. Type the multi-line commit message at the top. Start with main heading,
 //Then double line break and type the detailed commit message with changes
 
+//Amend the current branch
+git commit --amend -m "Creates a new commit with a new message"
+
 see commit best practices: https://medium.com/@nawarpianist/git-commit-best-practices-dab8d722de99

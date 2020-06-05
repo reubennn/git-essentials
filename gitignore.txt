@@ -18,3 +18,10 @@ e.g. Ignore all files that end in .php, but, do not ignore index.php
 e.g. assets\videos\
 
 # This is a comment
+
+//Suggestions:
+* Ignore compiled source compiled
+* packages and compressed files
+* Logs and databases
+* Operating system generated files
+* User-uploaded assets (images, PDFs, videos)
