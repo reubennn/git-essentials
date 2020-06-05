@@ -1,0 +1,2 @@
+//You can use multiple commands in the command line, for example
+git commit -am "Commit message here"
