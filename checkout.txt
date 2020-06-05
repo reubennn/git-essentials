@@ -1,0 +1,3 @@
+//Revert changes to a previous commit (use -- for the current branch)
+//This command will discard any changes made!
+git checkout -- filename.html

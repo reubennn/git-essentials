@@ -1,0 +1,7 @@
+//Check the working tree status:
+git status
+
+Check previous changes:
+git log
+git log -n 5 // Only display the 5 most recent commits
+git log --oneline //Display on the first line of the commit messages
