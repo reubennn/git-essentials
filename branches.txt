@@ -3,13 +3,10 @@ git branch
 //The * indicates you are in this current branch
 
 //Move HEAD to a different branch
-git branch <name of branch>
-OR
 git checkout <name of branch>
 
 //Create a new branch while the HEAD is pointing to a different branch (i.e. master branch)
 git branch <new branch name> <SHA of the branch>
 
 //Or if the HEAD is currently pointing to the branch you want to create a new branch in
-git checkout -b <new branch name>
-
+git switch -c <new branch name>
