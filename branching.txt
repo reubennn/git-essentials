@@ -1,0 +1,21 @@
+//List all branches
+git branch
+//The * indicates you are in this current branch
+
+//Move HEAD to a different branch
+git checkout <name of branch>
+
+//Create a new branch of an already commited branch while the HEAD is pointing to a different branch (i.e. master branch)
+git branch <new branch name> <SHA of the branch that has been committed>
+
+//Or if the HEAD is currently pointing to the branch you want to create a new branch in
+git switch -c <new branch name>
+
+//Create a branch from the current HEAD
+git branch <name of new branch>
+
+//Change name of a branch
+git branch -m <original branch name> <new name>
+
+//Delete a branch
+git branch -D <name of branch>

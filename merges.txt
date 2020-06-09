@@ -1,0 +1,2 @@
+//Merge a branch to the current branch the HEAD is pointing to
+git merge <name of branch with the changes you want to merge>
