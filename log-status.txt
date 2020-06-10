@@ -3,5 +3,56 @@ git status
 
 Check previous changes:
 git log
-git log -n 5 // Only display the 5 most recent commits
 git log --oneline //Display on the first line of the commit messages
+
+// ---------- FILTER ---------- 
+
+//Filter number of commits seen
+git log -3
+git log -n 5 // Only display the 5 most recent commits
+
+//Filter log by time
+git log --since=2020-03-01 
+git log --until=2020-03-01
+git log --until="3 days ago"
+git log --after=2.weeks --before=3.days
+
+//Filter log by author
+git log --author="Reuben"
+
+//Filter for regular expressions
+fit log --grep="Initial" //Returns if message was Initial commit
+
+//Filter log all commits within two SHAs
+git log <SHA-1>..<SHA-2>
+git log <SHA-1>..HEAD
+
+//Filter log based on changes to a particular file or directory
+git log <filename or directory>
+
+// ---------- FORMAT ----------
+
+//Look at changeset with each commit 
+git log -p //patch
+//What is the patch that would change it from one condition to the other?
+
+//Show statistics about a commit
+git log --stat
+
+//Alter the format
+git log --format=medium //medium is the default
+git log --format=short //shorter format
+oneline //Commits on one line (with full SHA value)
+full
+fuller
+email
+raw
+
+//For shorter SHAs on oneline, can use: 
+git log --oneline
+
+//Graphs out the commits
+git log --graph
+
+//Nice simple map
+git log --graph --all --oneline --decorate
