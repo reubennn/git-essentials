@@ -1,3 +1,9 @@
+/* Branches are cheap */
+    * Try new ideas
+    * Isolate features or sections of work
+/* One working directory */
+/* Fast context switching */
+
 //List all branches
 git branch
 //The * indicates you are in this current branch
@@ -18,4 +24,29 @@ git branch <name of new branch>
 git branch -m <original branch name> <new name>
 
 //Delete a branch
-git branch -D <name of branch>
+git branch -d <name of branch> //Safe delete - will check you haven't made a mistake
+git branch -D <name of branch> //If the branch has commits which have not been fully merged and you're sure you want to delete it
+
+//Create a new branch AND switch to this branch
+git checkout -b <name of new branch>
+
+//See which branches were merged from the current branch
+git branch --merged
+
+//See which branches are not included/were not merged in the current branch
+git branch --no-merged
+
+//Change name of a branch
+git branch -m <new branch name> //If currently in the branch you want to rename
+git branch -m <old branch name> <new branch name> // If not in the branch
+
+// --------- SWITCHING BRANCHES --------
+Switching with uncommited changes
+* Cannot switch if changes in working directory conflict
+* Can switch if changes in working directory could be applied without conflict
+* Can switch if files are not being tracked
+
+Three Options:
+* Commit the changes to the current branch
+* Remove the changes, checkout the file again
+* Stash the changes
