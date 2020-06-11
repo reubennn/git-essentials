@@ -1,0 +1,51 @@
+// --------- RESET TYPES --------
+* Reset changes the files in the staging index and/or working 
+  directory to the state they had when a specified commit was made
+* Make my project look like it did back then
+* Moves the HEAD pointer to a specific commit
+* Types: soft, mixed, hard
+
+// ---------SOFT RESET --------
+* Moves HEAD pointer
+* Does not change staging index
+* Does not change working directory
+
+~ Why use soft reset?
+* Return to an old state and leave code changes staged
+* Useful for amending one or more commits
+* Similiar to 'git commit --amend'
+* Previous commits will be discarded
+* Be careful about amending commits which have been shared
+
+git reset --soft <tree-ish>
+
+
+// ---------MIXED RESET --------
+* Moves HEAD pointer
+* Change staging index
+* Does not change working directory
+* Default choice
+
+~ Why use soft reset?
+* Return to an old state and leave code changes in working directory
+* Useful for reorganizing commits
+* Previous commits will be discarded
+* Be careful about amending commits which have been shared
+
+git reset --mixed <tree-ish>
+
+// ---------HARD RESET --------
+* Moves HEAD pointer
+* Change staging index to match repository
+* Change working directory to match repository
+
+~ Why use soft reset?
+* Return to an old state and discard all code changes
+* Useful to permanently undo commits
+* Previous commits and all changes will be discarded
+* Be careful about amending commits which have been shared
+
+git reset --hard <tree-ish>
+
+//Delete the last commit
+git reset --hard HEAD^

@@ -26,7 +26,4 @@ git commit -a
 //Amend the current branch
 git commit --amend -m "Creates a new commit with a new message"
 
-//Delete the last commit
-git reset --hard HEAD^
-
 see commit best practices: https://medium.com/@nawarpianist/git-commit-best-practices-dab8d722de99
