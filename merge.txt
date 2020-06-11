@@ -1,0 +1,11 @@
+//Merge a branch into the current branch
+git merge <name of branch to be merged>
+
+// ---------FAST FORWARD MERGE VS. REAL MERGE --------
+Fast-forward: 
+When merging, no new commit is needed to be created, 
+it is moved to the end of the branch being merged to
+
+Real merge (non-fast forward): 
+A new commit is created to join the two branches together,
+say if there is commits in between.
