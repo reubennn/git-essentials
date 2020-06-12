@@ -1,2 +1,0 @@
-//Reverts back to an older commit
-git revert <SHA>

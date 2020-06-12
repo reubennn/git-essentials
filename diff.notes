@@ -1,0 +1,23 @@
+* // ---------- SHOW CHANGES ---------- // *
+# View changes in working directory
+git diff
+
+# View changes in the staging (cached) area
+git diff --staged
+OR:
+git diff --cached
+
+# Highlight only the words that have changed
+git diff --color-words
+
+# Show the changes in a particular commit
+git show SHA-number
+
+# Show the changes from two different commits
+git diff SHA-1(oldest first)..SHA-2(most recent)
+OR:
+git diff SHA-1..HEAD
+
+# Show the changes from two different branches
+git diff <branch-1>..<branch-2> //General rule, older branch first
+git diff <branch-1>..<branch-2>^^

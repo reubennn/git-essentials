@@ -1,0 +1,8 @@
+* // ---------- CHECKOUT ---------- // *
+
+# Revert changes to a previous commit (use -- to apply changes for the current branch)
+//This command will discard any changes made!
+git checkout -- filename.html
+
+# Revert changes from a specific previous commit to the current branch
+git checkout <SHA> -- <file>

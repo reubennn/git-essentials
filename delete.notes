@@ -1,0 +1,4 @@
+# Remove a file permanently and then adds the remove to the staging directory
+// Unix remove command
+git rm .\file
+//If the file was already removed from the directory this command stages the delete

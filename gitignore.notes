@@ -1,0 +1,35 @@
+* // ---------- GIT IGNORE FILE ---------- // *
+The file should be placed in the project directory:
+project/.gitignore 
+
+// List of rules to determine which files to ignore
+// Changes made to ignored files will be ignored by Git
+
+* // ---------- GIT IGNORE METHODS ---------- // *
+# Pattern Matching (basic regular expressions)
+* ? [aeiou] [0-9]
+
+# Ignore all files in the logs directory ending it .txt:
+logs\*.txt
+
+# Negative expressions
+*.php // Ignore all files that end in .php
+!index.php 
+// but, do not ignore index.php
+
+# Ignore all files in a directory with a trailing slash:
+e.g. assets\videos\
+
+# This is a comment in the .gitignore file
+
+# Ignore tracked file
+git rm --cached <file>
+//Git will say it is removing it but it actually isn't
+
+* // ---------- SUGGESTIONS ---------- // *
+Suggestions:
+    - Ignore compiled source compiled
+    - packages and compressed files
+    - Logs and databases
+    - Operating system generated files
+    - User-uploaded assets (images, PDFs, videos)

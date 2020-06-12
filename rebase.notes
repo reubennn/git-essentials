@@ -1,0 +1,9 @@
+* // ---------- REBASE ---------- // *
+git rebase -i HEAD~n // where n is the number of commits to perform the rebase on from the HEAD
+
+# To change the commit message
+// Replace 'pick <SHA>' with 'reword <SHA>'
+
+# Save file and exit
+
+// see https://linuxize.com/post/change-git-commit-message/#:~:text=Changing%20an%20Older%20or%20Multiple%20Commits,-If%20you%20need&text=Navigate%20to%20the%20repository%20containing%20the%20commit%20message%20you%20want%20to%20change.&text=Save%20the%20changes%20and%20close,file%2C%20and%20close%20the%20editor.

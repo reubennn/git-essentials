@@ -1,7 +1,0 @@
-//Remove files which are being untracked (VERY DESTRUCTIVE ACTION)
-//The files are not in the staging directory or repository
-git clean -i -n -f
-
--i -> interactive, walks you through the clean
--n -> Dry run. Let's see what happens if I do this
--f -> force run the command

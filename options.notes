@@ -1,0 +1,10 @@
+* // ---------- COMMAND OPTIONS ---------- // *
+# You can use multiple commands in the command line
+for example:
+git commit -am "Commit message here"
+
+# You can use * as a wildcard to select all files with the anything matching before the *
+git add tours*
+// Will add tours.html, tours.tour_detail.html etc.
+
+# Use . to select all files
