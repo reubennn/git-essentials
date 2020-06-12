@@ -1,0 +1,33 @@
+* // ---------- STASH SAVE ---------- // *
+# Save current changes in the working directory to the stash
+git stash save "<name>"
+// This will not stash untracked files
+
+# To include untracked files in the stash
+git stash -u
+git stash --include-untracked
+
+* // ---------- STASH VIEW ---------- // *
+# How to view the stash
+git stash list
+
+# Show a particular stash
+git stash show stash@{0}
+git stash show -p stash@{0} // Show the changes in patches
+
+* // ---------- RETRIEVE & APPLY A STASH ---------- // *
+# Retrieve most recent stashed item (and deletes it from the stash)
+git stash pop
+
+# Retrieve a specific stash (and delete it from the stash)
+git stash pop stash@{0}
+
+# Apply stashed changes (and does not delete it in the stash)
+git stash apply // e.g. Go to multiple branches and apply the patch
+
+* // ---------- DELETE STASH ---------- // *
+# Delete a particular stash from the stash
+git stash drop stash@{0}
+
+# Delete all items in the stash
+git stash clear
