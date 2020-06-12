@@ -9,3 +9,25 @@ it is moved to the end of the branch being merged to
 Real merge (non-fast forward): 
 A new commit is created to join the two branches together,
 say if there is commits in between.
+
+// --------- MERGE CONFLICT --------
+* Abord merge
+* Resolve the conflicts manually
+* Use a merge tool
+
+//Abort the merge
+git merge --abort
+
+//Show differences between the branches
+git show --color-words_
+
+// --------- STRATEGIES TO REDUCE CONFLICTS --------
+* Keep lines short
+* Keep commits small and focused
+* Beware of stray edits to whitespace (spaces, tabs, line returns)
+* Merge often
+* Track changes to master
+    - Keep merging master into the new feature branch periodically
+    - This allows conflicts to regularly be resolved
+    - Once the new feature is complete, merge back into master
+    - Merge shouldn't have too many conflicts due to the ongoing up-keep
