@@ -39,8 +39,8 @@ git branch -m <original branch name> <new name> // If not in the branch
 git branch -d <name of branch> // Safe delete - will check you haven't made a mistake
 git branch -D <name of branch> // If the branch has commits which have not been fully merged and you're sure you want to delete it
 
-* // ---------- BRANCH DELETE ---------- // *
-#See which branches were merged from the current branch
+* // ---------- BRANCH MERGE ---------- // *
+# See which branches were merged from the current branch
 git branch --merged
 
 # See which branches are not included/were not merged in the current branch
