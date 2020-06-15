@@ -25,7 +25,7 @@ git switch -c <new branch name>
 # Create a branch from the current HEAD
 git branch <name of new branch>
 
-#Create a new branch AND switch to this branch
+# Create a new branch AND switch to this branch
 git checkout -b <name of new branch>
 
 * // ---------- BRANCH RENAME ---------- // *

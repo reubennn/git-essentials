@@ -56,7 +56,11 @@ Best practice:
     - Fetch before you go offline
     - Fetch often
 
-* // ---------- TRACKING ---------- // *
+* // ---------- FETCH + MERGE ---------- // *
+# Perform a git fetch and git merge in one command
+git pull
+
+* // ---------- TRACKING / NON-TRACKING ---------- // *
 // If the remote branch is not tracked, then it needs to be specified each time you push/pull
 // If it is, then the remote branch does not need to be specified
 
@@ -72,6 +76,23 @@ Note:
 // origin/master is the tracking branch for the remote branch (it is not the actual remote branch)
 // It is a tracking branch that is on the local machine
 
+* // ---------- REMOTE BRANCH CHECKOUT ---------- // *
+// You cannot checkout remote branches
+// Instead, you need to create a new branch from the remote branch
+
+# Creating a branch from a remote branch
+git branch <name of the new branch> <untracked remote branch>
+
 * // ---------- DELETE REMOTE ---------- // *
 # To delete a remote
 git remote rm <name of remote>
+
+
+* // ---------- DELETE A REMOTE BRANCH ---------- // *
+// Remove a branch from the remote repository
+// Useful when a feature branch is complete and merged
+
+# Delete a remote branch
+git push <remote name> :<name of remote branch to delete> // Old school method
+OR:
+git push <remote name> --delete <name of remote branch to delete> 
