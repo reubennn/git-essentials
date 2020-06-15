@@ -1,0 +1,6 @@
+* // ---------- ALIAS ---------- // *
+// You can create alias' for commonly-used commands
+
+# Add alias "st = status" to ~/.gitconfig
+git config --global alias.st "status"
+// Or you can just edit the .gitconfig file directly

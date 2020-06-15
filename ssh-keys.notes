@@ -1,0 +1,13 @@
+# You can set up SSH keys for remote login
+// Create two mathematically linked files
+// Public one goes on a remote server
+// Private one on your own computer
+// When you go to log in, the two files interact and you are authenticated
+
+// SSH keys can be logged into other servers
+// e.g. One file for multiple development & production servers
+
+//To-do
+
+See:
+// https://help.github.com/en/articles/set-up-git

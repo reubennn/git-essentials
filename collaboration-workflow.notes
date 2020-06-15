@@ -1,0 +1,86 @@
+* // ---------- EXAMPLE WORKFLOW ---------- // *
+# // ---------- Kevin ---------- //
+// We want to checkout the branch to work on
+git checkout master
+
+// We have just logged onto the computer after a few hours, first thing to do is:
+git fetch
+
+// There were changes made to the remote repository, so we need to merge these
+// even if they are unrelated to the changes that are going to be made
+git merge origin/master
+
+// We want to create a new feature in a separate branch
+git checkout -b feedback_form
+
+// Made the changes etc. Now we are ready to commit
+git add feedback.html
+git commit -m "Adds customer feedback form"
+OR:
+git commit -am "Adds customer feedback form"
+
+// Not ready to merge the feature into master yet, we want Lynda to see the changes first
+// But, we need to check to see if any changes have been made:
+git fetch
+
+// No changes have been made, so we push the new feature branch to the remote
+git push -u origin feedback_form // -u is used to track the branch
+
+# // ---------- Lynda ---------- //
+// She navigates to the master branch
+git checkout master
+
+// First thing to do is fetch
+git fetch
+
+// There is new data and changes
+git branch -r // Show the new branch to see it
+
+// We want to bring the master up to date
+git merge origin/master // Not necessary but good practice
+
+// She needs to create a new branch
+git checkout -b feedback_form origin/feedback_form // We have specified where to create the new branch from
+// If feedback_form was not specified at the end, then it would have been branched off from master
+
+// She can then check to see what changes have been made:
+git log
+
+// She can see specifically the changes made in a particular commit
+git show 84bn6adf0
+
+// She made an additional change
+git commit am "Adds tour selector to feedback form"
+
+// Check to see if any more changes have been made
+git fetch
+
+// Then she pushes her work to the remote  repository
+git push // Repository or branch not specified because it is a tracking branch - git is already tracking it
+
+# // ---------- Kevin ---------- //
+// Lynda emails Kevin and lets him know the changes have been completed and pushed to the remote repository
+git fetch
+
+// Show details about each of the commits
+git log -p feedback_form..origin/feedback_form // Similiar to diff, instead, see changes as individual commits
+
+// Whilst on the feedback_form branch, merge the changes
+git merge origin/feedback_form
+
+// Now we swap over to the maste branch
+git checkout master
+
+// Check to see if there are any changes on the remote
+git fetch
+
+// If there were changes, then we need to merge them to bring it completely up to date:
+git merge origin/master
+
+// Now we can merge the new feature feedback_form into the master branch
+git merge feedback_form
+
+// Now push the local master to the remote repository
+git push
+
+// Now the new feature is pushed to the remote repository where all colleagues can see it and then can be deployed
