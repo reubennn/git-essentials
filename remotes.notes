@@ -1,0 +1,77 @@
+* // ---------- REMOTES ---------- // *
+// Local Git repositories do not require a network connection
+// Remote repositories ("remotes") are hosted by servers over a network
+// Remotes allow easy collaboration
+// Push local repository changes to the remote
+// Fetch remote changes to the local repository
+// Git is designed to be a distributed version control
+// All repositories are the same
+// Often, one remote is designated as the primary repository for collaboration
+
+# Add a remote w/ URL
+git remote add origin <URL of the repo> // Convention is to call the primary main remote "origin"
+// On the repo page in GitHub, press "Clone or download" and copy the HTTP URL
+
+# List all remotes
+git remote
+git remote -v // More information on your remotes (URL etc.)
+
+# Show remote branches
+git branch -r
+
+# Show all branches
+git branch -a
+
+* // ---------- PUSH ---------- // *
+// Push local commits to the remote server
+
+# Push an existing repository to a remote that is not being tracked yet
+git push -u <remote name> <branch to push> // The -u option means to track the branch
+
+# Push an existing repository to a remote
+git push <remote name> <branch to push> // The -u option means to track the branch
+
+# Push the current branch to the tracked remote
+git push
+
+// The remote can be viewed in the .git\config file
+
+* // ---------- FETCH ---------- // *
+// Pull commits from the remote server to the local machine
+
+# Clone a remote repository
+git clone <URL> // If no name is specified, it will use the git repository to create a directory
+git clone <URL> <name of directory to clone to>
+
+# Snchronise with the remote repository and pull all data
+git fetch
+OR:
+git fetch <name of remote>
+// Performing a fetch will not affect the current branch
+// It purely check in with the server to see if there are any changes
+
+Best practice:
+    - Fetch before you work
+    - Fetch before you push
+    - Fetch before you go offline
+    - Fetch often
+
+* // ---------- TRACKING ---------- // *
+// If the remote branch is not tracked, then it needs to be specified each time you push/pull
+// If it is, then the remote branch does not need to be specified
+
+// If the -u option was not specified when creating the remote,
+# Track a remote branch
+git branch -u <upstream> <branch name>
+// upstream e.g. = origin/non_tracking
+
+# Untrack a branch
+git branch --unset-upstream <branch name>
+
+Note:
+// origin/master is the tracking branch for the remote branch (it is not the actual remote branch)
+// It is a tracking branch that is on the local machine
+
+* // ---------- DELETE REMOTE ---------- // *
+# To delete a remote
+git remote rm <name of remote>
