@@ -1,0 +1,100 @@
+* // ---------- CREATE TAGS ---------- // *
+// Tags allow marking points in history as important
+// A named refgerence to a commit
+// Most often used to mark releases (v1.0, v1.1, v2.0)
+// Can mark key features or changes (ecommerce, redesign)
+// Can mark points for team discussion (bug, issue136)
+
+Two types of tags:
+# 1. Lightweight tags
+git tag <tag name> <commit SHA>
+
+# 2. Annotated tag (most common)
+// Use this tag if you are unsure which one to use
+git tag -a <tag name> -m "Tag description" <commit SHA>
+// e.g. git tag -a v1.1 -m "Version 1.0" dd5c4928a0
+OR:
+git tag -am "Tag description" <tag name> <commit SHA>
+// e.g. git tag -am "Version 1.0" v1.0 dd5c4928a0
+
+# Create a tag at the HEAD
+git tag <tag name>
+
+* // ---------- LIST TAGS ---------- // *
+# List tags
+git tag
+git tag --list
+git tag -l
+
+# List tags beginning with "string"
+git tag -l "string*" // * is a wildcard
+
+# List tags with annotations
+git tag -l -n
+git tag -ln
+
+# Work with tags (like SHAs)
+git show v1.1
+git diff v1.0..v1.1
+
+* // ---------- DELETE TAGS ---------- // *
+# To delete a tag
+git tag --delete <name of tag>
+git tag -d <name of tag>
+
+# Delete a remote tag (like you would a remote branch)
+git push <name of remote> :<name of tag>
+git push --delete <remote> <tag>
+git push -d <remote> <tag>
+
+* // ---------- PUSH TAGS ---------- // *
+// Like branches, tags are local unless shared to a remote
+// git push does not transfer tags
+// Tags must be explicity transferred
+// git fetch automatically retrieves shared tags
+
+# Push a tag to a remote server
+git push <remote name> <tag name>
+// e.g. git push origin v1.1
+
+# Push all tags to a remote server
+git push origin --tags
+
+* // ---------- FETCH TAGS ---------- // *
+# Fetch commits and tags
+git fetch
+
+# Fetch only tags (with necessary commits)
+git fetch --tags
+
+* // ---------- CHECKING OUT TAGS ---------- // *
+// Tags are not branches
+// Tags identify a particular commit in our history
+// Tags can be checkout out, just like any commit
+
+# The right way to checkout a tag, is to create a branch from it
+git checkout -b new_branch v1.1
+git checkout v1.1
+
+* // ---------- DETACHED HEAD STATE ---------- // *
+Be careful when checking out a tag:
+// Possible to get into a detached HEAD state:
+// Checking out a commit puts the local repository in a "detached HEAD state"
+// Like being on an unnamed branch
+// New commits will not belong to any branch
+// Detached commits will be garbage collected
+
+If you find yourself in a detached HEAD state, there are three options:
+
+# 1. Tag the commit (HEAD detached)
+git tag <tag name> // The tag will stop the commit from being garbage collected
+
+# 2. Create a branch (HEAD detached)
+git branch <branch name>
+// Downside to this is that the HEAD is still in the detached state,
+// So you'd need to checkout the branch after
+
+# 3. Create a branch and reattach HEAD
+git checkout -b <branch name>
+OR:
+git switch -c <new-branch-name>
