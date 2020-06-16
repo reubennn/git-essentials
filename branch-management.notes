@@ -1,0 +1,86 @@
+* // ---------- FORCE PUSH ---------- // *
+// Local version is better than remote version
+// Remote version went wrong and needs repair
+// Versions have diverged and merging is undesirable
+// Use with extreme caution
+// Easy way to anger your whole development team
+// Disruptive for others using the remote branch
+// Commits disappear
+// Subsequent commits are orphaned
+
+# Replace the remote version with the local version
+git push -f
+OR:
+git push --force
+
+* // ---------- IDENTIFY MERGED BRANCHES ---------- // *
+// List branches that have been merged into a branch
+// Useful for knowing what features have been incorporated
+// Useful for cleanup after merging many features
+
+# Tips to identify merged branches
+// Use current branch by default
+// "Branches whose tips are reachable from the specified commit (HEAD if not specified)"
+// Branch tip is in the history of the specified commit
+// Can specify other branch names or commits
+
+# List which branches have been merged into the current branch fully
+git branch --merged
+git branch -r --merged // For remote branches
+
+# List which branches have not yet been merged or there are commits which have not been added
+git branch --no-merged
+
+# Identify merged branches for the following tree-ish
+git branch --merged HEAD
+git branch --merged <SHA>
+git branch --merged <branch>
+git branch --merged origin/feature
+
+* // ---------- DELETING LOCAL & REMOTE BRANCHES ---------- // *
+# To delete a branch (must be on a different branch)
+git branch -d <branch to delete>
+
+# Delete not yet merged branch
+git branch -D <branch to delete>
+
+# Delete remote branch
+git push <remote> :<branch to delete>
+// e.g. git push origin :new_feature
+OR:
+git push --delete <remote> <branch to delete>
+OR:
+git push -d <remote> <branch to delete>
+
+* // ---------- PRUNING STALE BRANCHES ---------- // *
+// Delete all stale remote-tracking branches
+// Remote-tracking branches, not remote branches
+// Stale branch: a remote-tracking branch that no longer tracks anything
+//  because the actual branch in the remote repository has been deleted.
+
+Remote branches:
+    1. Branch on the remote repository (bugfix)
+    2. Local snapshot of the remote branch (origin/bugfix) // The remote tracking branch
+    3. Local branch, tracking the remote branch (bugfix)
+
+# Pruning stale branches
+// Deleting a remote prunes the remote-tracking branch automatically
+// Necessary when collaborators delete branches
+// Fetch does not automatically prune
+
+# Delete stale remote-tracking branches
+git remote prune <remote name>
+git remote prune origin --dry-run // See what happens before actually doing it
+
+# Shortcut: prune, then Fetch
+git fetch --prune
+git fetch -p // Shorthand
+
+# Always prune before fetch
+git config --global fetch.prune true
+
+Unrelated:
+git prune
+// This prunes all unreachable objects and does not need to be used
+//  As it is preformed in git's garbage collection
+git gc // Force git garbage collection
