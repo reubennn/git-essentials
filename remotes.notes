@@ -22,18 +22,27 @@ git branch -r
 # Show all branches
 git branch -a
 
+# Set remote using HTTPS
+git remote set-url https://github.com/USERNAME/REPO.git
+
+# Set remote using SSH
+git remote set-url git@github.com/USERNAME/REPO.git
+
 * // ---------- PUSH ---------- // *
 // Push local commits to the remote server
 
-# Push an existing repository to a remote that is not being tracked yet
+# Push a local branch to a remote that is not being tracked yet
 git push -u <remote name> <branch to push> // The -u option means to track the branch
+// Use -u every time we are pushing a new branch, so that the remote branch is then tracked
 
-# Push an existing repository to a remote
-git push <remote name> <branch to push> // The -u option means to track the branch
+# Push an a branch to a remote
+git push <remote name> <branch to push> //
 
 # Push the current branch to the tracked remote
 git push
 
+# Push all branches to the remote
+git push <remote name> --all
 // The remote can be viewed in the .git\config file
 
 * // ---------- FETCH ---------- // *
@@ -64,7 +73,8 @@ git pull
 // If the remote branch is not tracked, then it needs to be specified each time you push/pull
 // If it is, then the remote branch does not need to be specified
 
-// If the -u option was not specified when creating the remote,
+// If the -u option was not specified when creating the remote
+// Or, if we want to track a new remote branch
 # Track a remote branch
 git branch -u <upstream> <branch name>
 // upstream e.g. = origin/non_tracking
@@ -94,5 +104,6 @@ git remote rm <name of remote>
 
 # Delete a remote branch
 git push <remote name> :<name of remote branch to delete> // Old school method
+// e.g. git push origin :origin/new_feature
 OR:
 git push <remote name> --delete <name of remote branch to delete> 
