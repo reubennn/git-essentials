@@ -10,6 +10,21 @@ git add -a
 # Remove a file from the staging directory
 git restore --staged <file>
 
+* // ---------- PATCH MODE ---------- // *
+# Add hunks of code to the staging directory
+git add --patch
+OR:
+git add -p
+
+# Do it to a particular file
+git add -p <filename>
+
+# Can also enter patch mode in these other Git commands
+git stash -p
+git reset -p
+git checkout -p
+git commit -p
+
 * // ---------- COMMIT ---------- // *
 # Then, commit everything in the index with a message:
 git commit -m "Type a brief summary of the change here <50 characters"
