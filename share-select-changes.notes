@@ -1,0 +1,90 @@
+* // ---------- CHERRY-PICKING COMMITS ---------- // *
+// Apply the changes from one or more existing commits
+// Each existing commit is recorded as a new commit on the current branch
+// Conceptually similiar to copy-paste
+// New commits have different SHAs
+// Cannot cherry pick a merge commit
+// Use --edit (or -e) to edit the commit message
+// Can result in conflicts which must be resolved
+
+# Cherry pick a commit
+git cherry-pick <SHA>
+
+# Cherry pick a range of commits
+git cherry-pick <SHA>..<SHA>
+
+* // ---------- RESOLVE CHERRY-PICKING COMMITS ---------- // *
+// If there are conflicts, you will be able to make changes as you 
+//  normally would with a merge conflict.
+
+# Once changes are complete, add the file to the staging index
+git add <file>
+
+# Then continue the cherry-pick
+git cherry-pick --continue
+
+* // ---------- CREATE DIFF PATCHES ---------- // *
+// Shares changes via files
+// Useful when changes are not ready for a public branch
+// Useful when collaborators do not share a remote
+// Discussion, review, approval processes
+
+# Direct output to a file
+echo "Hello" > temp.txt // Take output "Hello" and send it to temp.txt file
+// If temp.txt does not exist, it will be created
+// If temp.txt does exist, it will be replaced with the output "Hello"
+
+# Direct output to file in Git
+git diff from-commit to-commit > <file-location>/output.diff // .diff is the standard file extension for diff files
+OR:
+git diff from-commit..to-commit > <file-location>/output.diff
+
+* // ---------- APPLY DIFF PATCHES ---------- // *
+// Apply changes in a diff patch file to the working directory
+// Make changes, but not commits
+// No commit history transferred
+
+# Apply a diff file
+git apply <path to diff file>
+
+// A diff patch apply will fail if it the working directory is in a state so it does 
+//  not contain some of the anchoring lines of code in the patch
+// The patch can only apply if the working directory is in a state
+//  that allows it to work
+
+* // ---------- CREATE FORMATTED DIFF PATCHES ---------- // *
+// Export each commit in Unix mailbox format
+// Useful for email distribution of changes
+// Includes commit messages
+// One commit per file by default
+-if no directory is specified then it will be placed in the current project directory-
+
+# Export all commits in the range
+git format-patch <SHA-1>..<SHA-2> // Specify the SHA right BEFORE the commit we want
+
+# Export all commits on current branch, which are not in master branch
+git format-patch master
+
+# Export a single commit
+git format-patch -1 <SHA>
+
+# Put patch files into a directory
+git format-patch master -o <directory>
+
+# Output patches as a single file
+git format-patch <SHA-1>..<SHA-2> --stdout >> feature.patch
+
+* // ---------- APPLY FORMATTED DIFF PATCHES ---------- // *
+// Extract author, commit message, and changes from a mailbox message
+//  and apply them to the current branch
+// Similiar to cherry-picking: same changes, different SHAs
+// Commit history is transferred
+
+# Apply a single formatted patch
+git am <location of patch file> // am = apply mailbox formatted patch
+
+# Apply all formatted patches in a directory
+git am <location of patch files>/*.patch // Use wildcard 
+// e.g. git am ~/Desktop/patches/*.patch
+// It will apply these patches in sequential order
+// Since they are numbered, it will keep the correct order
