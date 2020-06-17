@@ -1,9 +1,155 @@
 * // ---------- REBASE ---------- // *
+// Take commits from a branch and replay them at the end of another branch
+// Useful to integrate recent commits without merging
+// Maintains a cleaner, more linear project history
+// Ensures topic branch commits apply cleanly
+
+# Rebase current branch to tip of master
+git rebase master
+
+# Rebase <branch> to tip of master
+git rebase master <branch> // Performs a checkout onto <branch>, then performs the rebase onto tip of master
+
+# Return commit where topic branch diverges
+git merge-base master <branch>
+
+* // ---------- MERGING VS REBASING ---------- // *
+// Two ways to incorporate changes from one branch into another branch
+// Similiar ends, but the means are different
+
+Merging:
+// Adds a merge commit
+// Non-desctructive
+// Complete record of what happened and when
+// Easy to undo
+// Logs can become cluttered and non-linear
+
+Rebasing:
+// No additional merge commit
+// Destructive: SHA changes, commits are rewritten
+// No longer a complete record of what happened and when
+// Tricky to undo
+// Logs are cleaner, more linear
+
+The golden rule of rebasing:
+# Thou shalt not rebase a public branch
+// Rebase abandons existing, shared commits and creates new, similiar commits instead
+// Collaborators would see the project history vanish
+// Getting all collaborators back in sync can be difficult
+
+How to choose?:
+# Merge :
+    // to allow commits to stand out or to be clearly grouped
+    // to bring large topic branches back into master
+    // anytime the topic branch is already public and being used by others
+# Rebase :
+    // to add minor commits in master to a topic branch
+    // to move commits from one branch to another
+
+* // ---------- RESOLVE REBASE CONFLICTS ---------- // *
+// Rebasing creates new commits on existing code
+// May conflict with existing code
+// Git pauses rebase before each conflicting commit
+// Similiar to resolving merge conflicts
+
+# After all rebase conflicts have been resolved
+git rebase --continue
+
+# Do not rebase the current commit, but continue to rebase the next commits in the chain
+git rebase --skip
+// Example use when the underlying code already contains the change in the conflicting commit
+//  and you'd like to use the existing one instead
+
+# Abort the rebase altogether
+git rebase --abort
+// Code will revert back to what it was before the rebase
+
+* // ---------- REBASE ONTO OTHER BRANCHES ---------- // *
+
+git rebase --onto <newbase> <upstream> <branch>
+// e.g. git rebase --onto master ecommerce new_feature
+// where upstream = how far up should you go, before you stop picking up commits
+Explanation:
+// Let's take the new_feature branch off of the ecommerce branch
+//  and move it to the tip of the master
+
+Another explanation:
+// Gather up all the commits, since the new_feature branch diverged from the ecommerce branch,
+//  then replay those commits as if they were based off of the current tip of the master branch
+
+* // ---------- UNDO A REBASE ---------- // *
+// Can undo simple rebases
+// Rebase is destructive
+// SHAs, commit messages, change sets, and more can be altered
+// Undoing complex rebases may lose data
+
+# For a simple undo rebase
+// Unless ORIG_HEAD has changed again
+// (rebase, reset, merge change ORIG_HEAD) // "Original head"
+// ORIG_HEAD is a temp variable to track of how things were just before these commands were performed
+git reset --hard ORIG_HEAD
+
+# Undo by rebasing to former merge-base SHA
+git rebase --onto <9291f0c88> master new_feature
+// where <9291f0c88> = <former merge-base SHA where it used to be split off of>
+
+* // ---------- INTERACTIVE REBASING ---------- // *
+// Chance to modify commits as they are being replayed
+// Opens the git-rebase-todo file for editing
+// Can reorder or or skip commits
+// Can edit commit contents
+
+# Interactive rebase
+git rebase -i master new_feature
+
+Interactive rebase choices:
+// pick = use the commit
+// drop = skip the commit
+// reword = reword the commit message
+// edit = amend the contents of the commit
+// squash = fold two or more commits onto one
+// fixup = same as squash, but discard the message
+// exec = execute/run a command from the command line shell (not used often)
+
+// Simply replace "pick <SHA> "commit message"
+// With "reword <SHA> "commit message"
+// Save file and close it
+// ~ You can use whatever choice you like
+
+# Interactive rebase the last n commits onto the same branch
+// But with the opportunity to modify them
 git rebase -i HEAD~n // where n is the number of commits to perform the rebase on from the HEAD
 
-# To change the commit message
-// Replace 'pick <SHA>' with 'reword <SHA>'
+* // ---------- SQUASH & FIXUP COMMITS ---------- // *
+// Fold two or more commits into one
+// Uses first author in the commit series
 
-# Save file and exit
+# Squash
+// Combine change sets
+// Concatenate messages
 
-// see https://linuxize.com/post/change-git-commit-message/#:~:text=Changing%20an%20Older%20or%20Multiple%20Commits,-If%20you%20need&text=Navigate%20to%20the%20repository%20containing%20the%20commit%20message%20you%20want%20to%20change.&text=Save%20the%20changes%20and%20close,file%2C%20and%20close%20the%20editor.
+# Fixup
+// Combine change sets
+// Discards the message in this commit
+
+// There should always be a pick above a squash or fixup, because it is squashed into the above commit
+
+* // ---------- PULL REBASE ---------- // *
+// Fetch from remote, then rebase instead of merging
+// Keeps history cleaner by reducing merge commits
+// Only use on local commits not shared to a remote
+
+# Perform a Git pull rebase
+git pull --rebase
+OR:
+git pull -r
+
+# Preserve locally created merge commits and not flatten them
+// If the commits you are rebasing include some merge commits
+git pull --rebase=preserve
+
+# Gives opportunity to go into the interactive rebase
+git pull --rebase=interactive
+
+* Useful for visualising branches *
+git log --graph --all --decorate --oneline
