@@ -1,0 +1,68 @@
+* // ---------- INTERACTIVE STAGING ---------- // *
+// Stages changes interactively
+// Allows staging portions of changed files
+// Helps to make smaller, focused commits
+// Feature of many Git GUI tools
+
+# Enter Git add interactive mode
+git add --interactive
+git add -i
+
+# 1. Status
+// Check status of staged and unstaged files
+
+# 2. Update
+// Adds files to staging directory
+
+# 3. Revert
+// Unstage files from staging directory to working directory (HEAD version)
+
+# 4. Add untracked
+// Add untracked file to the staging directory
+
+# 5. Patch
+// Allows staging portions of a changed file
+
+# 6. Diff
+// Review the diff of a particular file in the staging directory with the HEAD
+
+# 7. Quit
+// Exit out of the interactive staging
+
+# 8. Help
+// Get help of all the commands in the interactive staging environment
+
+* // ---------- PATCH MODE ---------- // *
+// Allows staging portions of a changed file
+// "Hunk" : an area whre two files differ
+// Hunks can be staged, skipped, or split into smaller hunks
+# When in patch mode, get help on the different commands (y,n,q,a,d,/,j,J,g,s,e,?)
+?
+
+Patch mode options:
+// y - stage this hunk
+// n - do not stage this hunk
+// q - quit; do not stage this hunk or any of the remaining ones
+// a - stage this hunk and all later hunks in the file
+// d - do not stage this hunk or any of the later hunks in the file
+// g - select a hunk to go to
+// / - search for a hunk matching the given regex
+// j - leave this hunk undecided, see next undecided hunk
+// J - leave this hunk undecided, see next hunk
+// s - split the current hunk into smaller hunks
+// e - manually edit the current hunk
+// ? - print help
+
+* // ---------- SPLITTING A HUNK ---------- // *
+// Hunks can contain multiple changes
+// Tell Git to try to split a hunk further
+// Requires one or more unchanged lines between changes
+# s
+
+
+* // ---------- EDIT A HUNK ---------- // *
+// Can edit a hunk manually
+// Most useful when a hunk cannot be split automatically
+// Diff-style line prefixes: +, -, #, space
+# e
+// Will open the editor to make changes to the file to be edited
