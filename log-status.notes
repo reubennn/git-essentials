@@ -54,3 +54,20 @@ git log --graph
 
 # Nice simple map to see branching & merging of commits
 git log --graph --all --oneline --decorate
+
+* // ---------- LOG OPTIONS ---------- // *
+// Log is the primary interface to Git
+// Log has many options: sorting, filtering, output formatting
+
+# List commits as patches (diff)
+git log --patch
+OR:
+git log -p
+
+# List edits to lines 100-150 in a file
+git log -L 100,150:<filename>
+
+# Use '/' to search for a string in the log
+// e.g. / bananas to search for first occurance of bananas in commit code
+# Press 'n' for the next search result
+# Press 'N' for previous search result
