@@ -1,0 +1,3 @@
+* // ---------- INITILIASE GIT ---------- // *
+# Initialise Git in the current project
+git init
