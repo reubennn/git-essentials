@@ -1,0 +1,28 @@
+* // ---------- BLAME ---------- // *
+// Brose annotated file
+// Determine who changed which lines in a file and why
+// Useful for probing the history behind a file's contents
+// Useful for identifying which commit introduced a bug
+
+# Annotate file with commit details
+git blame <filename>
+
+# Ignore whitespace
+git blame -w <filename>
+
+# Annotate lines 100-150
+git blame -L 100,150 <filename>
+
+# Annotate lines 100-105
+git blame -L 100,+5 <filename>
+
+# Annotate file at revision <SHA>
+git blame <SHA> <filename>
+git blame <SHA> -- <filename>
+
+# Add a global alias for "praise"
+// Some companies create a praise alias to remove the negativity
+git config --global alias.praise blame
+
+# Similiar to blame, different output format
+git annotate <filename>

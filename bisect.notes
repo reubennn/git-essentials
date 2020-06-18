@@ -1,0 +1,28 @@
+* // ---------- BISECT ---------- // *
+// Find the commit that introduced a bug or regression
+// Mark last good revision and first bad revision
+// Resets code to mid-point
+// Mark as good or bad revision
+// Repeat
+
+# Start bisect session
+git bisect start
+
+# Specify where the problem is
+git bisect bad <treeish>
+OR:
+git bisect new <treeish>
+// Leave blank to use the head
+
+# Specify where the problem is not
+git bisect good <treeish>
+OR:
+git bisect old <treeish>
+
+# Bisect will go to the half-way point
+// Need to check if the code has the problem or not
+git bisect good // If the commit does not have a problem
+git bisect bad // If the commit has a problem
+
+# Reset to HEAD before bisecting
+git bisect reset
