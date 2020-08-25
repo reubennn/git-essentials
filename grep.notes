@@ -1,0 +1,7 @@
+* // ---------- GREP ---------- // *
+
+# Prints lines which match a pattern
+git grep "<text to find>"
+
+// e.g. find all lines that have ".id" in them
+// git grep "\.id"
