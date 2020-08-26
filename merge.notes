@@ -37,3 +37,8 @@ Track changes to master:
     - This allows conflicts to regularly be resolved
     - Once the new feature is complete, merge back into master
     - Merge shouldn't have too many conflicts due to the ongoing up-keep
+
+* // ---------- UNRELATED HISTORIES ---------- // *
+// By default, git does not allow merging two branches that do not have a common base
+# Force the merge to happen
+git merge <branch to merge> --allow-unrelated-histories
