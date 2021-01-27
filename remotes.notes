@@ -22,11 +22,16 @@ git branch -r
 # Show all branches
 git branch -a
 
+* // ---------- REMOTE BRANCH ---------- // *
 # Set remote using HTTPS
 git remote set-url https://github.com/USERNAME/REPO.git
 
 # Set remote using SSH
 git remote set-url git@github.com/USERNAME/REPO.git
+
+# Change the remote URL/URI
+git remote set-url <remote name> <new git url>
+// e.g. git remote set-url origin git@github.com/USERNAME/REPO.git
 
 * // ---------- PUSH ---------- // *
 // Push local commits to the remote server
@@ -106,4 +111,4 @@ git remote rm <name of remote>
 git push <remote name> :<name of remote branch to delete> // Old school method
 // e.g. git push origin :origin/new_feature
 OR:
-git push <remote name> --delete <name of remote branch to delete> 
+git push <remote name> --delete <name of remote branch to delete>
