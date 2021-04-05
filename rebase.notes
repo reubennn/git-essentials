@@ -13,6 +13,9 @@ git rebase master <branch> // Performs a checkout onto <branch>, then performs t
 # Return commit where topic branch diverges
 git merge-base master <branch>
 
+# Rebase all the way back to the root commit
+git rebase -i --root
+
 * // ---------- MERGING VS REBASING ---------- // *
 // Two ways to incorporate changes from one branch into another branch
 // Similiar ends, but the means are different
